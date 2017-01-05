@@ -5,6 +5,10 @@ python:
   - "3.4"
   - "3.5"
 # command to install dependencies
+before_install:
+    - pip install pytest
 #install: "pip install -r requirements.txt"
 # command to run tests
-script: pytest Test.py
+script: 
+    - py.test -v --color=yes --exitfirst --showlocals --durations=5
+    - python Test.py
