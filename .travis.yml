@@ -6,7 +6,6 @@ python:
 # command to install dependencies
 before_install:
     - pip install pytest
-#install: "pip install -r requirements.txt"
 # command to run tests
 script: 
     - py.test -v --color=yes --exitfirst --showlocals --durations=5
