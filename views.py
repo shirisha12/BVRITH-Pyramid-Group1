@@ -1,22 +1,27 @@
-from django.shortcuts import render,redirect
-from app.forms import PersonInfoForm
-from app.models import PersonInfo
-from django.http import HttpResponse
+from django.shortcuts import render
+
+
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 
 def index(request):
-	return HttpResponse("WELCOME TO STUDENT INFORMATION SYSTEM")
-
+	return HttpResponse("hello!!!!!!!!")
 
 def base(request):
-    if request.method == "POST":
-        form = PersonInfoForm(request.POST)
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
         if form.is_valid():
-            PersonInfo = form.save(commit=False)
-            PersonInfo.save()
-            return redirect('success')
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('home')
     else:
-        form = PersonInfoForm()
-    return render(request, 'app/base.html', {'form': form})
-def success(request):
-	return HttpResponse("Successfully updated")
+        form = UserCreationForm()
+    return render(request, 'apps/base.html', {'form': form})
 
+def success(request):
+	return HttpResponse("hey!!")
+# Create your views here.

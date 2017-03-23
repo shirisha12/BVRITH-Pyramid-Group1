@@ -1,7 +1,7 @@
 from django.forms import ModelForm
-from app.models import PersonInfo
+from faculty.models import Details
 
-class PersonInfoForm(ModelForm):
+class DetailsForm(ModelForm):
 	class Meta:
-		model = PersonInfo
+		model = Details
 		fields = '__all__'

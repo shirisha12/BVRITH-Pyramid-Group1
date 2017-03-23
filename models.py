@@ -1,5 +1,11 @@
+
 from django.db import models
 from datetime import datetime
+
+class Details(models.Model):
+	rollNo = models.TextField(max_length=20, primary_key = True)
+	name = models.TextField(max_length=40)
+	department = models.TextField(max_length=10)
 
 class PersonInfo(models.Model):
     rollNo = models.TextField(max_length=20,primary_key = True)
@@ -35,3 +41,4 @@ class Notifications(models.Model):
 	date = models.TextField()
 	notification = models.CharField(max_length=30)
 	
+# Create your models here.
