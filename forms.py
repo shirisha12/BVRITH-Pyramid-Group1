@@ -5,3 +5,4 @@ class DetailsForm(ModelForm):
 	class Meta:
 		model = Details
 		fields = '__all__'
+
